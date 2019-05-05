@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class Vertex
 {
-	private static int radius = 20;
 	protected int xLocation;
 	protected int yLocation;
 	protected int num;

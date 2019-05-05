@@ -3,6 +3,7 @@
  */
 
 import java.util.ArrayList;
+import java.lang.Math;
 import javafx.application.Application;
 import javafx.stage.Stage; 
 import javafx.scene.shape.Circle; 
@@ -91,7 +92,24 @@ public class Main extends Application{
 		   return -1;
 		  }
 		}
-
 	
+	public Circle dragVertex(MouseEvent event) {
+		  int test = inVertex(event);
+		  if (test != -1) {
+		   Circle circle = new Circle(vertexList.get(test).xLocation, vertexList.get(test).yLocation, 20);
+		   vertexList.remove(test);
+		   return circle;
+		  }
+		  return null;
+		}
 	
+	public double getDistance(Vertex a, Vertex b) {
+		double xDiff = Math.abs(a.xLocation - b.xLocation);
+		double yDiff = Math.abs(a.yLocation - b.yLocation);
+		double xDiffSQ = xDiff*xDiff;
+		double yDiffSQ = yDiff*yDiff;
+		
+		double ans = Math.sqrt(xDiffSQ+yDiffSQ);
+		return ans;
+	}
 }
