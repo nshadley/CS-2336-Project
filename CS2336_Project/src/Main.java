@@ -15,8 +15,12 @@ import javafx.scene.input.MouseButton;;
 
 public class Main extends Application{
 	ArrayList<Vertex> vertexList = new ArrayList<Vertex>();
+	
+	public static void main(String[] args) {
+	  launch(args);
+	}
 
-
+	@Override
 	public void start(Stage primaryStage) {
 	  Pane pane = new Pane();
 	  Scene scene = new Scene(pane, 500, 500);
