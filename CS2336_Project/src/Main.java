@@ -26,6 +26,7 @@ public class Main extends Application{
 	  Pane pane = new Pane();
 	  Scene scene = new Scene(pane, 500, 500);
 	  primaryStage.setScene(scene);
+	  
 	  scene.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 	      @Override
 	      public void handle(MouseEvent event) {
@@ -93,15 +94,6 @@ public class Main extends Application{
 		  }
 		}
 	
-	public Circle dragVertex(MouseEvent event) {
-		  int test = inVertex(event);
-		  if (test != -1) {
-		   Circle circle = new Circle(vertexList.get(test).xLocation, vertexList.get(test).yLocation, 20);
-		   vertexList.remove(test);
-		   return circle;
-		  }
-		  return null;
-		}
 	
 	public double getDistance(Vertex a, Vertex b) {
 		double xDiff = Math.abs(a.xLocation - b.xLocation);
