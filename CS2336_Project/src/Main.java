@@ -1,5 +1,5 @@
 /* 		CS 2336 Group Project
- * 		This file was created by ___(Creator's name here)___
+ * 		This class was created by (Multiple Contributers)
  */
 
 import java.util.ArrayList;
@@ -16,9 +16,8 @@ import javafx.scene.input.MouseButton;;
 public class Main extends Application{
 	ArrayList<Vertex> vertexList = new ArrayList<Vertex>();
 
-	
-	//The function "Start" was created by ______
-	public void Start(Stage primaryStage) {
+
+	public void start(Stage primaryStage) {
 	  Pane pane = new Pane();
 	  Scene scene = new Scene(pane, 500, 500);
 	  primaryStage.setScene(scene);
