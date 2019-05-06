@@ -93,4 +93,12 @@ public class Main extends Application{
 		double ans = Math.sqrt(xDiffSQ+yDiffSQ);
 		return ans;
 	}
+	
+	public void changeVerticiesNum(int n)
+	{
+		for(int i = n+1; i < vertexList.size(); i++)
+		{
+			vertexList.get(i).setVertexNumLower();
+		}
+	}
 }
