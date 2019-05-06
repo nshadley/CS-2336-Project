@@ -30,43 +30,54 @@ public class Main extends Application{
 
 	@Override
 	public void start(Stage primaryStage) {
-		VBox root = new VBox();
+		Pane root = new Pane();
 		
-		  Pane pane = new Pane();
-		  BorderPane uiPane = new BorderPane();
-		  Pane instructions = new Pane();
-		  
-		  Rectangle instructionRect = new Rectangle(200, 100);
-		  //instructionRect.setX(50);
-		  //instructionRect.setY(50);
-		  instructionRect.setStroke(Color.BLACK);
-		  instructionRect.setFill(Color.WHITE);
-		  
-		  Label iLabel = new Label("INSTRUCTIONS\nAdd:\t\t\tLeft Click\n"
-		  		+ "Move:\t\tCtrl Drag\nConnect:\t\tDrag\nRemove:\t\tRight Click");
-		  
-		  instructions.getChildren().addAll(instructionRect, iLabel);
-		  
-		  StackPane findSP = new StackPane();
-		  
-		  Rectangle fspRect = new Rectangle(300, 75);
-		  fspRect.setStroke(Color.BLACK);
-		  fspRect.setFill(Color.WHITE);
-		  
-		  TextField sVertex = new TextField();
-		  TextField eVertex = new TextField();
-		  
-		  Button showSP = new Button("Show Shortest Path");
-		  
-		  findSP.getChildren().addAll(new Label("Find a shortest path\n"), new Label("Starting vertex: "),
-				  sVertex, new Label("Ending vertex: "), eVertex, showSP);
+	  Pane pane = new Pane();
+	  Pane instructions = new Pane();
 	  
-		  uiPane.getChildren().addAll(instructions, findSP);
-		  
-		  root.getChildren().addAll(uiPane, pane);
-		  
-		  
-		  Scene scene = new Scene(root, 750, 500);
+	  
+	  Rectangle instructionRect = new Rectangle(150, 100);
+	  instructionRect.setStroke(Color.BLACK);
+	  instructionRect.setFill(Color.TRANSPARENT);
+	  
+	  Label iLabel = new Label("INSTRUCTIONS\nAdd:\t\t\tLeft Click\n"
+	  		+ "Move:\t\tCtrl Drag\nConnect:\t\tDrag\nRemove:\t\tRight Click");
+	  
+	  instructions.getChildren().addAll(instructionRect, iLabel);
+	  
+	  HBox findSP = new HBox();
+	  
+	  Rectangle fspRect = new Rectangle(300, 75);
+	  fspRect.setStroke(Color.BLACK);
+	  fspRect.setFill(Color.TRANSPARENT);
+	  
+	  TextField sVertex = new TextField();
+	  TextField eVertex = new TextField();
+	  TextField sourceVertex = new TextField();
+	  sourceVertex.setPrefWidth(30);
+	  sVertex.setPrefWidth(30);
+	  eVertex.setPrefWidth(30);
+	  
+	  Button showMST = new Button("Show MST");
+	  Button showSP = new Button("Show Shortest Path");
+	  Button showAllSP = new Button("Show all SP from the source");
+	  
+	  findSP.getChildren().addAll(showMST, new Label("Source vertex:"), sourceVertex, showAllSP, new Label("Starting vertex: "),
+			  sVertex, new Label("Ending vertex: "), eVertex, showSP);
+	  
+	  instructions.setPadding(new Insets(100));
+	  findSP.setPadding(new Insets(15, 12, 15, 12));
+	  findSP.setSpacing(5);
+	  
+	  BorderPane border = new BorderPane();
+	  
+	  border.setTop(instructions);
+	  border.setBottom(findSP);
+	  
+	  root.getChildren().addAll(border, pane);
+	  
+	  
+	  Scene scene = new Scene(root, 750, 500);
 
 	  primaryStage.setScene(scene);
 	  scene.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
