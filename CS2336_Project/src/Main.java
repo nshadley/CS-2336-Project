@@ -42,6 +42,7 @@ public class Main extends Application{
 	         	              return;
 	         	          int place = inVertex(event2);
 	         	          if (place >= 0) {
+				      changeVerticiesNum(place);
 	         	              vertexList.remove(place);
 	         	              pane.getChildren().remove(addVertex);
 	         	          }
