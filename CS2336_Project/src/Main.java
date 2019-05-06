@@ -58,7 +58,7 @@ public class Main extends Application{
 			vertexList.add(new Vertex((int)event.getSceneX(), (int)event.getSceneY(), vertexList.size())); // Please take a look at this line, it fixed it temporarily by casting it to an int, however might be a better solution
 		 	Circle circle = new Circle(event.getSceneX(), event.getSceneY(), 20);
 		 	circle.setStroke(Color.BLACK); 
-		 	circle.setFill(Color.WHITE);
+		 	circle.setFill(Color.TRANSPARENT);
 		 	return circle;
 		}
 		return null;
