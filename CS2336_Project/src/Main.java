@@ -54,46 +54,35 @@ public class Main extends Application{
 	}
 
 	public Circle createVertex(MouseEvent event) {
-		  if (inVertex(event) == -1) {
-		   vertexList.add(new Vertex((int)event.getSceneX(), (int)event.getSceneY(), vertexList.size())); // Please take a look at this line, it fixed it temporarily by casting it to an int, however might be a better solution
-		 	 Circle circle = new Circle(event.getSceneX(), event.getSceneY(), 20);
-		 	 circle.setStroke(Color.BLACK); 
-		 	 circle.setFill(Color.WHITE);
-		 	 return circle;
-		  }
-		  return null;
+		if (inVertex(event) == -1) {
+			vertexList.add(new Vertex((int)event.getSceneX(), (int)event.getSceneY(), vertexList.size())); // Please take a look at this line, it fixed it temporarily by casting it to an int, however might be a better solution
+		 	Circle circle = new Circle(event.getSceneX(), event.getSceneY(), 20);
+		 	circle.setStroke(Color.BLACK); 
+		 	circle.setFill(Color.WHITE);
+		 	return circle;
 		}
-
-	public Circle removeVertex(MouseEvent event) {
-		  int test = inVertex(event);
-		  if (test != -1) {
-		   Circle circle = new Circle(vertexList.get(test).xLocation, vertexList.get(test).yLocation, 20);
-		   vertexList.remove(test);
-		   return circle;
-		  }
-		  return null;
-		}
+		return null;
+	}
 
 	public int inVertex(MouseEvent event) {
-		   if (vertexList.size() == 0)
-		      return -1;
-		   else {
-		      int check = 0;
-		      int hold = -1;
-		      while (check < vertexList.size()) {
-		          double distance = Math.hypot(event.getSceneX()-vertexList.get(check).xLocation, event.getSceneY()-vertexList.get(check).yLocation);
-		          if (distance <= 20)
-		             return check;
-		          else if (distance < 40)
-		             hold = check;
-		          check++;
-		   }
-		   if (hold > -1)
-		      return -2;
-		   return -1;
-		  }
+		if (vertexList.size() == 0)
+			return -1;
+		else {
+			int check = 0;
+		      	int hold = -1;
+		      	while (check < vertexList.size()) {
+		        	double distance = Math.hypot(event.getSceneX()-vertexList.get(check).xLocation, event.getSceneY()-vertexList.get(check).yLocation);
+		          	if (distance <= 20)
+		             		return check;
+		          	else if (distance < 40)
+		             		hold = check;
+		          	check++;
+		   	}
+		   	if (hold > -1)
+		      		return -2;
+		   	return -1;
 		}
-	
+	}
 	
 	public double getDistance(Vertex a, Vertex b) {
 		double xDiff = Math.abs(a.xLocation - b.xLocation);
