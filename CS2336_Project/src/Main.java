@@ -12,7 +12,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.Scene; 
 import javafx.event.EventHandler;
 import javafx.scene.layout.Pane;
-import javafx.scene.input.MouseButton;;
+import javafx.scene.input.MouseButton;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 
 public class Main extends Application{
 	ArrayList<Vertex> vertexList = new ArrayList<Vertex>();
@@ -23,10 +30,45 @@ public class Main extends Application{
 
 	@Override
 	public void start(Stage primaryStage) {
-	  Pane pane = new Pane();
-	  Scene scene = new Scene(pane, 500, 500);
-	  primaryStage.setScene(scene);
+		VBox root = new VBox();
+		
+		  Pane pane = new Pane();
+		  BorderPane uiPane = new BorderPane();
+		  Pane instructions = new Pane();
+		  
+		  Rectangle instructionRect = new Rectangle(200, 100);
+		  //instructionRect.setX(50);
+		  //instructionRect.setY(50);
+		  instructionRect.setStroke(Color.BLACK);
+		  instructionRect.setFill(Color.WHITE);
+		  
+		  Label iLabel = new Label("INSTRUCTIONS\nAdd:\t\t\tLeft Click\n"
+		  		+ "Move:\t\tCtrl Drag\nConnect:\t\tDrag\nRemove:\t\tRight Click");
+		  
+		  instructions.getChildren().addAll(instructionRect, iLabel);
+		  
+		  StackPane findSP = new StackPane();
+		  
+		  Rectangle fspRect = new Rectangle(300, 75);
+		  fspRect.setStroke(Color.BLACK);
+		  fspRect.setFill(Color.WHITE);
+		  
+		  TextField sVertex = new TextField();
+		  TextField eVertex = new TextField();
+		  
+		  Button showSP = new Button("Show Shortest Path");
+		  
+		  findSP.getChildren().addAll(new Label("Find a shortest path\n"), new Label("Starting vertex: "),
+				  sVertex, new Label("Ending vertex: "), eVertex, showSP);
 	  
+		  uiPane.getChildren().addAll(instructions, findSP);
+		  
+		  root.getChildren().addAll(uiPane, pane);
+		  
+		  
+		  Scene scene = new Scene(root, 750, 500);
+
+	  primaryStage.setScene(scene);
 	  scene.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 	      @Override
 	      public void handle(MouseEvent event) {
