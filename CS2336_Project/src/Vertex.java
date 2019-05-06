@@ -25,4 +25,9 @@ public class Vertex
 		yLocation = y;
 		num = n;
 	}
+	
+	public void setVertexNumLower()
+	{
+		num--;
+	}
 }
